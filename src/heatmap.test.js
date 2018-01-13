@@ -1,21 +1,21 @@
-import heatmap from './heatmap.js';
+import Heatmap from './heatmap.js';
 import Dropzone from 'dropzone';
 
-describe('heatmap', () => {
-    let Controller;
+describe('Heatmap', () => {
+    let heatzone;
 
     it('should be defined', () => {
-        Controller = heatmap();
-        expect(Controller).toBeDefined();
+        heatzone = Heatmap();
+        expect(heatzone).toBeDefined();
     });
 
     describe('Initialization', () => {
         beforeEach(() => {
-            Controller.init();
+            heatzone.init();
         });
 
         it('should create an instance of Dropzone', () => {
-            expect(Controller.dropzone instanceof Dropzone).toBeTruthy();
+            expect(heatzone.dropzone instanceof Dropzone).toBeTruthy();
         });
     });
 });
