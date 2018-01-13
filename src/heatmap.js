@@ -1,12 +1,10 @@
-import Dropzone from 'dropzone';
-
 export default function heatmap() {
-    const DROPZONE_URL = "/post/";
-    const DROPZONE_TARGET = document.body;
-
-    function init() {
-        this.dropzone = new Dropzone(DROPZONE_TARGET, {url: DROPZONE_URL});
+    function readFile(fileUrl) {
+        let request = new XMLHttpRequest();
+        request.overrideMimeType("application/json");
+        request.open('GET', fileUrl, true);
+        request.send(null);
     }
 
-    return {init}
+    return {readFile}
 };

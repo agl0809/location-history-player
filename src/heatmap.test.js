@@ -1,21 +1,22 @@
 import Heatmap from './heatmap.js';
-import Dropzone from 'dropzone';
 
 describe('Heatmap', () => {
-    let heatzone;
+    let heatmap;
 
     it('should be defined', () => {
-        heatzone = Heatmap();
-        expect(heatzone).toBeDefined();
+        heatmap = Heatmap();
+        expect(heatmap).toBeDefined();
     });
 
-    describe('Initialization', () => {
-        beforeEach(() => {
-            heatzone.init();
-        });
+    describe('reading a file', () => {
+        it('should open a local file with a right path', () => {
+            let fileUrl = 'any url';
+            spyOn(XMLHttpRequest.prototype, 'open').and.callThrough();
+            spyOn(XMLHttpRequest.prototype, 'send');
 
-        it('should create an instance of Dropzone', () => {
-            expect(heatzone.dropzone instanceof Dropzone).toBeTruthy();
+            heatmap.readFile(fileUrl);
+
+            expect(XMLHttpRequest.prototype.open).toHaveBeenCalled();
         });
     });
 });
