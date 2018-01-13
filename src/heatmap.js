@@ -1,12 +1,12 @@
-let heatmap = function heatmap() {
-    let getCoords = () => {
-        return {
-            lat: 'any lat',
-            lng: 'any lng'
-        };
+import Dropzone from 'dropzone';
+
+export default function heatmap() {
+    const DROPZONE_URL = "/";
+    const DROPZONE_TARGET = document.body;
+
+    function init () {
+        this.dropzone = new Dropzone(DROPZONE_TARGET ,  {url: DROPZONE_URL});
     }
 
-    return {getCoords};
+    return {init}
 };
-
-export default heatmap;

@@ -1,24 +1,21 @@
 import heatmap from './heatmap.js';
+import Dropzone from 'dropzone';
 
 describe('heatmap', () => {
-    let anyHeatmap; //TODO Include readfile dependency
-    let anyCoords = {
-        lat: 'any lat',
-        lng: 'any lng'
-    };
+    let Controller;
 
-    let whenHeatMapIsExecuted = () => {
-        anyHeatmap = heatmap();
-    };
+    it('should be defined', () => {
+        Controller = heatmap();
+        expect(Controller).toBeDefined();
+    });
 
-    describe('reading data', () => {
-        it('should gets a proper object ', () => {
-            whenHeatMapIsExecuted();
-            expect(anyHeatmap.getCoords()).toEqual(anyCoords)
+    describe('Initialization', () => {
+        beforeEach(() => {
+            Controller.init();
         });
 
-        it('should not store coordinates with a valid message', () => {
-
+        it('should create an instance of Dropzone', () => {
+            expect(Controller.dropzone instanceof Dropzone).toBeTruthy();
         });
     });
 });
