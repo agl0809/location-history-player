@@ -1,7 +1,7 @@
 import Dropzone from 'dropzone';
 
 export default function heatmap() {
-    const DROPZONE_URL = "/";
+    const DROPZONE_URL = "/post/";
     const DROPZONE_TARGET = document.body;
 
     function init() {
