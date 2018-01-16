@@ -1,17 +1,20 @@
 import HeatMap from './HeatMap.js';
 
-let heatMap, oldXMLHttpRequest, mockXHR;
+const READY_STATE = 4;
+let heatMap, oldXMLHttpRequest;
 
-function createMockXHR(responseText) {
-    mockXHR = {
+function createMockXhr(responseText, READY_STATE) {
+    const mockXHR = {
         open: jest.fn(),
         send: jest.fn(),
         overrideMimeType: jest.fn(),
-        readyState: 4,
+        readyState: READY_STATE,
         responseText: responseText
     };
 
     window.XMLHttpRequest = jest.fn(() => mockXHR);
+
+    return mockXHR;
 }
 
 function xmlhttprequestBackup() {
@@ -20,6 +23,11 @@ function xmlhttprequestBackup() {
 
 function xmlhttprequestRestore() {
     window.XMLHttpRequest = oldXMLHttpRequest
+}
+
+function WhenReadFile(fileUrl) {
+    const response = heatMap.readFile(fileUrl);
+    return response;
 }
 
 describe('HeatMap', () => {
@@ -41,26 +49,28 @@ describe('HeatMap', () => {
 
         it('should return an object with the file data extracted', (done) => {
             const fileContent = 'any content';
-            createMockXHR(fileContent);
+            let promise, xhr;
 
-            const response = heatMap.readFile(fileUrl);
-            mockXHR.onreadystatechange();
+            xhr = createMockXhr(fileContent, READY_STATE);
+            promise = WhenReadFile(fileUrl);
+            xhr.onreadystatechange();
 
-            response.then((response) => {
+            promise.then((response) => {
                 expect(response).toEqual(fileContent);
                 done();
             });
         });
 
         it('should return an error if the file is not correct', (done) => {
-            const exc = {error: 'any error'};
-            createMockXHR(exc);
+            const xhrError = {error: 'any error'};
+            let promise, xhr;
 
-            const response = heatMap.readFile(fileUrl);
-            mockXHR.onreadystatechange();
+            xhr = createMockXhr(xhrError, READY_STATE);
+            promise = WhenReadFile(fileUrl);
+            xhr.onreadystatechange();
 
-            response.catch((response) => {
-                expect(response).toEqual(exc);
+            promise.catch((response) => {
+                expect(response).toEqual(xhrError);
                 done();
             });
         });
