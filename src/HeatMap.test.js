@@ -104,7 +104,27 @@ describe('heatMap', () => {
     });
 
     describe('drawing a map', function () {
-        it('should draw a map with the coordenates', function () {
+        it('should create a map', function () {
+            const containerId = 'anyId';
+            const centerCoords = 'any coords';
+            const zoomLevel = 'any zoom';
+
+            document.body.innerHTML = '<div id="' + containerId + '"></div>';
+            window.L = {
+                map: jest.fn(),
+                tileLayer: jest.fn(),
+                heatLayer: jest.fn()
+            };
+
+            const MockSetView = {setView: jest.fn()};
+            window.L.map.mockReturnValue(MockSetView);
+
+            heatMap.createMap(containerId, centerCoords, zoomLevel);
+
+            expect(window.L.map).toHaveBeenCalledWith(containerId);
+            expect(window.L.map.mock.instances.length).toBe(1);
+            expect(MockSetView.setView).toHaveBeenCalledWith(centerCoords, zoomLevel);
+            expect(MockSetView.setView.mock.instances.length).toBe(1);
         });
     });
 });

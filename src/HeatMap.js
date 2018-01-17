@@ -37,5 +37,9 @@ export default function heatmap() {
         return coordsParsed;
     }
 
-    return {readFile, parseCoordenates}
+    function createMap(containerId, centerCoords, zoomLevel) {
+        return L.map(containerId).setView(centerCoords, zoomLevel);
+    }
+
+    return {readFile, parseCoordenates, createMap}
 };
