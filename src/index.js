@@ -1,4 +1,6 @@
+import registerServiceWorker from './registerServiceWorker';
 import HeatMap from './HeatMap';
 
+registerServiceWorker();
 let heatMap = HeatMap();
-heatMap.readFile('history.json');
+heatMap.getCoords('http://localhost:3000/history.json');

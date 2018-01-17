@@ -1,4 +1,5 @@
 export default function heatmap() {
+    const SCALAR_E7 = 0.0000001;
 
     function readFile(fileUrl) {
         const locationUrl = fileUrl;
@@ -21,5 +22,20 @@ export default function heatmap() {
         });
     }
 
-    return {readFile}
+    function parseCoordenates(track) {
+        let coordsParsed = [];
+
+        track.locations.forEach((point) => {
+            let lat, lon;
+
+            lat = point.latitudeE7 * SCALAR_E7;
+            lon = point.longitudeE7 * SCALAR_E7;
+
+            coordsParsed.push([lat, lon]);
+        });
+
+        return coordsParsed;
+    }
+
+    return {readFile, parseCoordenates}
 };
