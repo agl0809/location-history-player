@@ -33,21 +33,21 @@ function whenReadFile(fileUrl, xhr) {
     return promise;
 }
 
-describe('HeatMap', () => {
+describe('heatMap', () => {
 
     beforeEach(function () {
         heatMap = HeatMap();
     });
 
-    it('should be defined', () => {
-        expect(heatMap).toBeDefined();
-    });
-
     describe('reading a file', () => {
         const fileUrl = 'any url';
 
-        beforeEach(() => {
+        beforeEach(function () {
             xmlhttprequestBackup();
+        });
+
+        afterEach(() => {
+            xmlhttprequestRestore();
         });
 
         it('should return an object with the content of a valid json file', (done) => {
@@ -75,20 +75,10 @@ describe('HeatMap', () => {
                 done();
             });
         });
-
-        afterEach(() => {
-            xmlhttprequestRestore();
-        });
     });
 
     describe('parsing the file\'s content', () => {
-        const fileUrl = 'any url';
-
-        beforeEach(() => {
-            xmlhttprequestBackup();
-        });
-
-        it('should return an array of coordinates parsed properly', (done) => {
+        it('should return an array of coordinates parsed properly', () => {
             const latOne = 377788014;
             const lonOne = -1224155326;
             const latTwo = 377733334;
@@ -106,22 +96,16 @@ describe('HeatMap', () => {
                 [latOne * SCALAR_E7, lonOne * SCALAR_E7],
                 [latTwo * SCALAR_E7, lonTwo * SCALAR_E7]
             ];
-            let xhr, coordsParsed, promise;
+            let coordsParsed;
 
-            xhr = createMockXhr(fileContent, READY_STATE);
-            promise = whenReadFile(fileUrl, xhr);
-
-            promise.then((response) => {
-                coordsParsed = heatMap.parseCoordenates(response);
-                expect(coordsParsed).toEqual(expectedObject);
-                done();
-            });
-
+            coordsParsed = heatMap.parseCoordenates(fileContent);
+            expect(coordsParsed).toEqual(expectedObject);
         });
     });
 
-    afterEach(() => {
-        xmlhttprequestRestore();
+    describe('drawing a map', function () {
+        it('should draw a map with the coordenates', function () {
+        });
     });
 });
 
