@@ -109,13 +109,14 @@ describe('drawing a map', () => {
             minZoom: 'any min zoom'
         };
         const URL_TEMPLATE = 'any urlTemplate';
+        const createMapOptions = {HEATMAP_CONTAINER_ID, CENTER_COORDS, ZOOM_LEVEL, URL_TEMPLATE, TILE_LAYER_OPTIONS};
 
         const MockSetView = {setView: jest.fn()};
         const MockAddTo = {addTo: jest.fn()};
         LeafMap.map = jest.fn(() => MockSetView);
         LeafMap.tileLayer = jest.fn(() => MockAddTo);
 
-        createMap(HEATMAP_CONTAINER_ID, CENTER_COORDS, ZOOM_LEVEL, URL_TEMPLATE, TILE_LAYER_OPTIONS);
+        createMap(createMapOptions);
 
         expect(LeafMap.map).toBeCalledWith(HEATMAP_CONTAINER_ID);
         expect(MockSetView.setView).toBeCalledWith(CENTER_COORDS, ZOOM_LEVEL);
