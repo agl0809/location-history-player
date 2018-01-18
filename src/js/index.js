@@ -1,9 +1,13 @@
-import {parseCoordenates, createMap, createHeatMap} from 'js/HeatMap.js';
-import history from 'assets/history.json';
-import {SCALAR_E7, LEAFLET_OPTIONS, HEAT_OPTIONS} from 'helpers/constants.js';
+import {readFile, parseCoordenates, createMap, createHeatMap} from 'js/HeatMap.js';
+import {SCALAR_E7, LEAFLET_OPTIONS, HEAT_OPTIONS, JSON_FILE_URL} from 'helpers/constants.js';
 
-let coords, leafMap;
+let coords, leafMap, promise;
 
-coords = parseCoordenates(history, SCALAR_E7);
-leafMap = createMap(LEAFLET_OPTIONS);
-createHeatMap(leafMap, coords, HEAT_OPTIONS);
+promise = readFile(JSON_FILE_URL);
+
+promise.then((history) => {
+    coords = parseCoordenates(history, SCALAR_E7);
+    leafMap = createMap(LEAFLET_OPTIONS);
+    createHeatMap(leafMap, coords, HEAT_OPTIONS);
+});
+

@@ -7,7 +7,6 @@ function readFile(fileUrl) {
     return new Promise((resolve, reject) => {
         const request = new XMLHttpRequest();
         request.overrideMimeType("application/json");
-        request.open('GET', locationUrl, true);
         request.onreadystatechange = () => {
             if (request.readyState === 4) {
                 const resp = request.responseText;
@@ -16,16 +15,17 @@ function readFile(fileUrl) {
                 } else {
                     resolve(resp);
                 }
-                request.send(null);
             }
         };
+        request.open('GET', locationUrl, true);
+        request.send(null);
     });
 }
 
-function parseCoordenates(track, SCALAR_E7) {
+function parseCoordenates(coordenatesText, SCALAR_E7) {
     let coordsParsed = [];
 
-    track.locations.forEach((point) => {
+    JSON.parse(coordenatesText).locations.forEach((point) => {
         let lat, lon;
 
         lat = point.latitudeE7 * SCALAR_E7;

@@ -74,27 +74,16 @@ describe('reading a file', () => {
 describe('parsing the file\'s content', () => {
     it('should return an array of coordinates parsed properly', () => {
         const SCALAR_E7 = 0.0000001;
-        const latOne = 377788014;
-        const lonOne = -1224155326;
-        const latTwo = 377733334;
-        const lonTwo = 377788884;
-        const fileContent = {
-            "locations": [{
-                "latitudeE7": latOne,
-                "longitudeE7": lonOne
-            }, {
-                "latitudeE7": latTwo,
-                "longitudeE7": lonTwo
-            }]
-        };
+        const latOne = 1;
+        const lonOne = 1;
+        const fileContent = '{"locations": [{"latitudeE7": ' + latOne + ',"longitudeE7": ' + lonOne + '}]}';
         const expectedObject = [
-            [latOne * SCALAR_E7, lonOne * SCALAR_E7],
-            [latTwo * SCALAR_E7, lonTwo * SCALAR_E7]
+            [latOne * SCALAR_E7, lonOne * SCALAR_E7]
         ];
-        let coordsParsed;
+        let response;
 
-        coordsParsed = parseCoordenates(fileContent, SCALAR_E7);
-        expect(coordsParsed).toEqual(expectedObject);
+        response = parseCoordenates(fileContent, SCALAR_E7);
+        expect(response).toEqual(expectedObject);
     });
 });
 
