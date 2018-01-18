@@ -1,3 +1,6 @@
+import L from 'leaflet';
+import 'leaflet.heat';
+
 export default function heatmap() {
     const SCALAR_E7 = 0.0000001;
 
@@ -37,9 +40,20 @@ export default function heatmap() {
         return coordsParsed;
     }
 
-    function createMap(containerId, centerCoords, zoomLevel) {
-        return L.map(containerId).setView(centerCoords, zoomLevel);
+    function createMap(containerId, centerCoords, zoomLevel, urlTemplate, tileLayerOptions) {
+        let leafMap = L.map(containerId).setView(centerCoords, zoomLevel);
+        L.tileLayer(urlTemplate, tileLayerOptions).addTo(leafMap);
+
+        return leafMap;
     }
 
-    return {readFile, parseCoordenates, createMap}
+    function createHeatMap(mapInstance, coords, heatOptions) {
+        const heat = L.heatLayer(coords, heatOptions).addTo(mapInstance);
+
+        heat.redraw();
+
+        return heat;
+    }
+
+    return {readFile, parseCoordenates, createMap, createHeatMap}
 };

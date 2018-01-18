@@ -1,3 +1,4 @@
+import LeafMap from 'leaflet';
 import HeatMap from './HeatMap.js';
 
 const READY_STATE = 4;
@@ -34,7 +35,6 @@ function whenReadFile(fileUrl, xhr) {
 }
 
 describe('heatMap', () => {
-
     beforeEach(function () {
         heatMap = HeatMap();
     });
@@ -103,28 +103,51 @@ describe('heatMap', () => {
         });
     });
 
-    describe('drawing a map', function () {
-        it('should create a map', function () {
-            const containerId = 'anyId';
-            const centerCoords = 'any coords';
-            const zoomLevel = 'any zoom';
-
-            document.body.innerHTML = '<div id="' + containerId + '"></div>';
-            window.L = {
-                map: jest.fn(),
-                tileLayer: jest.fn(),
-                heatLayer: jest.fn()
+    describe('drawing a map', () => {
+        it('should create a map', () => {
+            const HEATMAP_CONTAINER_ID = 'any id';
+            const CENTER_COORDS = 'any coords';
+            const ZOOM_LEVEL = 'any zoom';
+            const TILE_LAYER_OPTIONS = {
+                attribution: 'any attribution',
+                maxZoom: 'any max zoom',
+                minZoom: 'any min zoom'
             };
+            const URL_TEMPLATE = 'any urlTemplate';
 
             const MockSetView = {setView: jest.fn()};
-            window.L.map.mockReturnValue(MockSetView);
+            const MockAddTo = {addTo: jest.fn()};
+            LeafMap.map = jest.fn(() => MockSetView);
+            LeafMap.tileLayer = jest.fn(() => MockAddTo);
 
-            heatMap.createMap(containerId, centerCoords, zoomLevel);
+            heatMap.createMap(HEATMAP_CONTAINER_ID, CENTER_COORDS, ZOOM_LEVEL, URL_TEMPLATE, TILE_LAYER_OPTIONS);
 
-            expect(window.L.map).toHaveBeenCalledWith(containerId);
-            expect(window.L.map.mock.instances.length).toBe(1);
-            expect(MockSetView.setView).toHaveBeenCalledWith(centerCoords, zoomLevel);
-            expect(MockSetView.setView.mock.instances.length).toBe(1);
+            expect(LeafMap.map).toBeCalledWith(HEATMAP_CONTAINER_ID);
+            expect(MockSetView.setView).toBeCalledWith(CENTER_COORDS, ZOOM_LEVEL);
+            expect(LeafMap.tileLayer).toBeCalledWith(URL_TEMPLATE, TILE_LAYER_OPTIONS);
+        });
+
+        it('should create a heat layer on the map using the coordenates received', () => {
+            const heatOptions = {
+                tileOpacity: 'any tileOpacity',
+                heatOpacity: 'any heatOpacity',
+                radius: 'any radius',
+                blur: 'any blur'
+            };
+            const coords = ['any lat', 'any lon'];
+            const mapInstance = {};
+
+            const MockAddTo = {addTo: jest.fn()};
+            LeafMap.heatLayer = jest.fn(() => MockAddTo);
+
+            const MockHeatMap = {redraw: jest.fn()};
+            MockAddTo.addTo.mockReturnValue(MockHeatMap);
+
+            heatMap.createHeatMap(mapInstance, coords, heatOptions);
+
+            expect(LeafMap.heatLayer).toBeCalledWith(coords, heatOptions);
+            expect(MockAddTo.addTo).toBeCalledWith(mapInstance);
+            expect(MockHeatMap.redraw).toBeCalled();
         });
     });
 });
