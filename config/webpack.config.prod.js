@@ -96,6 +96,7 @@ module.exports = {
       styles: path.join(paths.app, '/src/styles'),
       assets: path.join(paths.app, '/src/assets'),
       helpers: path.join(paths.app, '/src/helpers'),
+      lib: path.join(paths.app, '/src/js/lib'),
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
