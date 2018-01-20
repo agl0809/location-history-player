@@ -16,8 +16,8 @@ export const HEAT_OPTIONS = {
     radius: 25,
     blur: 15
 };
-export const HEATMAP_CONTAINER_ID = 'heatmap';
 
-// HeatMap
+// App
 export const JSON_FILE_URL = 'https://raw.githubusercontent.com/agl0809/timeline-history-heatmap/develop/public/history.json?token=ABfk349jXnABLIk5SYD-QkxyFvh5sK-iks5aa8ihwA%3D%3D';
-export const LEAFLET_OPTIONS = {HEATMAP_CONTAINER_ID, CENTER_COORDS, ZOOM_LEVEL, URL_TEMPLATE, TILE_LAYER_OPTIONS};
+export const LEAFLET_OPTIONS = {CENTER_COORDS, ZOOM_LEVEL, URL_TEMPLATE, TILE_LAYER_OPTIONS};
+export const HEATMAP_CONTAINER_ID = 'heatmap-container';

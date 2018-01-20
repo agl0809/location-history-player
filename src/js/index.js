@@ -1,11 +1,17 @@
-import {createMap, createHeatMap} from 'js/HeatMap.js';
-import {SCALAR_E7, LEAFLET_OPTIONS, HEAT_OPTIONS, JSON_FILE_URL} from 'helpers/constants.js';
+import {HEATMAP_CONTAINER_ID, LEAFLET_OPTIONS, HEAT_OPTIONS, JSON_FILE_URL} from 'helpers/constants.js';
 import LocationHistoryController from 'js/lib/LocationHistoryController/LocationHistoryController.js';
+import MapController from 'js/lib/Map/MapController.js';
 
 LocationHistoryController().getCoordenates(JSON_FILE_URL)
     .then((coords) => {
-        const leafMap = createMap(LEAFLET_OPTIONS);
-        createHeatMap(leafMap, coords, HEAT_OPTIONS);
+        MapController().renderHeatMap(
+            {
+                containerId: HEATMAP_CONTAINER_ID,
+                coordinates: coords,
+                mapOptions: LEAFLET_OPTIONS,
+                heatLayerOptions: HEAT_OPTIONS
+            }
+        );
     });
 
 
