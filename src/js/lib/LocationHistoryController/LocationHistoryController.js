@@ -4,8 +4,8 @@ import {SCALAR_E7} from '../../../../src/helpers/constants';
 function getCoordinates(JSONFileUrl) {
     return new Promise((resolve, reject) => {
 
-        LocationHistory.readFile(JSONFileUrl).then((fileContent) => {
-            resolve(LocationHistory.parseCoordinates(fileContent, SCALAR_E7));
+        LocationHistory.service(JSONFileUrl).then((fileContent) => {
+            resolve(LocationHistory.timeLineTakeoutParser(fileContent, SCALAR_E7));
         });
     });
 }

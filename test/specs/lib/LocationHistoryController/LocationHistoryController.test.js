@@ -17,7 +17,7 @@ describe('LocationHistoryController', () => {
         const expectedCoords = [[1, 1]]; //multiple
         let locationHistoryController, coords, mock;
 
-        LocationHistory.readFile = function (JSONFileUrl) {
+        LocationHistory.service = function (JSONFileUrl) {
             return new Promise((resolve, reject) => {
                 process.nextTick(
                     () => resolve(fileContent)
@@ -25,16 +25,16 @@ describe('LocationHistoryController', () => {
             });
         };
 
-        LocationHistory.parseCoordinates = jest.fn().mockReturnValue(expectedCoords);
+        LocationHistory.timeLineTakeoutParser = jest.fn().mockReturnValue(expectedCoords);
 
         locationHistoryController = LocationHistoryController();
         coords = locationHistoryController.getCoordinates(JSONFileUrl);
 
         expect.assertions(2);
 
-        return LocationHistory.readFile().then((data, coords) => {
+        return LocationHistory.service().then((data, coords) => {
             expect(data).toBe(fileContent);
-            expect(LocationHistory.parseCoordinates).toBeCalledWith(fileContent, SCALAR_E7);
+            expect(LocationHistory.timeLineTakeoutParser).toBeCalledWith(fileContent, SCALAR_E7);
         });
     });
 })
