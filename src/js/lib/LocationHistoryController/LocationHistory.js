@@ -1,6 +1,4 @@
 export function readFile(fileUrl) {
-    const locationUrl = fileUrl;
-
     return new Promise((resolve, reject) => {
         const request = new XMLHttpRequest();
         request.overrideMimeType("application/json");
@@ -14,15 +12,15 @@ export function readFile(fileUrl) {
                 }
             }
         };
-        request.open('GET', locationUrl, true);
+        request.open('GET', fileUrl, true);
         request.send(null);
     });
 }
 
-export function parseCoordenates(coordenatesText, SCALAR_E7) {
+export function parseCoordinates(coordinatesText, SCALAR_E7) {
     let coordsParsed = [];
 
-    JSON.parse(coordenatesText).locations.forEach((point) => {
+    JSON.parse(coordinatesText).locations.forEach((point) => {
         let lat, lon;
 
         lat = point.latitudeE7 * SCALAR_E7;

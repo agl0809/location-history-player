@@ -25,16 +25,16 @@ describe('LocationHistoryController', () => {
             });
         };
 
-        LocationHistory.parseCoordenates = jest.fn().mockReturnValue(expectedCoords);
+        LocationHistory.parseCoordinates = jest.fn().mockReturnValue(expectedCoords);
 
         locationHistoryController = LocationHistoryController();
-        coords = locationHistoryController.getCoordenates(JSONFileUrl);
+        coords = locationHistoryController.getCoordinates(JSONFileUrl);
 
         expect.assertions(2);
 
         return LocationHistory.readFile().then((data, coords) => {
             expect(data).toBe(fileContent);
-            expect(LocationHistory.parseCoordenates).toBeCalledWith(fileContent, SCALAR_E7);
+            expect(LocationHistory.parseCoordinates).toBeCalledWith(fileContent, SCALAR_E7);
         });
     });
 })

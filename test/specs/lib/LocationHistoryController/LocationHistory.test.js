@@ -83,7 +83,7 @@ describe('parsing the file\'s content', () => {
         ];
         let response;
 
-        response = LocationHistory.parseCoordenates(fileContent, SCALAR_E7);
+        response = LocationHistory.parseCoordinates(fileContent, SCALAR_E7);
         expect(response).toEqual(expectedObject);
     });
 });
