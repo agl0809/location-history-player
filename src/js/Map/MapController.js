@@ -1,4 +1,4 @@
-import * as Map from '../../../../src/js/lib/Map/Map';
+import * as Map from './Map';
 
 function renderHeatMap(options) {
     let map = Map.createMap(options.containerId, options.mapOptions);

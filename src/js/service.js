@@ -1,4 +1,4 @@
-export function service(fileUrl) {
+export default function service(fileUrl) {
     return new Promise((resolve, reject) => {
         const request = new XMLHttpRequest();
         request.overrideMimeType("application/json");
@@ -15,19 +15,4 @@ export function service(fileUrl) {
         request.open('GET', fileUrl, true);
         request.send(null);
     });
-}
-
-export function timeLineTakeoutParser(coordinatesText, SCALAR_E7) {
-    let coordsParsed = [];
-
-    JSON.parse(coordinatesText).locations.forEach((point) => {
-        let lat, lon;
-
-        lat = point.latitudeE7 * SCALAR_E7;
-        lon = point.longitudeE7 * SCALAR_E7;
-
-        coordsParsed.push([lat, lon]);
-    });
-
-    return coordsParsed;
 }

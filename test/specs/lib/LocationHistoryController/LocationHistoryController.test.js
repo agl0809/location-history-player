@@ -1,6 +1,6 @@
-import LocationHistoryController from '../../../../src/js/lib/LocationHistoryController/LocationHistoryController';
+import LocationHistoryController from '../../../../src/js/LocationHistoryController';
 import * as LocationHistory from '../../../../src/js/lib/LocationHistoryController/LocationHistory';
-import {SCALAR_E7} from '../../../../src/helpers/constants';
+import {SCALAR_E7} from '../../../../src/js/constants';
 
 describe('LocationHistoryController', () => {
     it('should be defined', function () {
