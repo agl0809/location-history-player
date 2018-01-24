@@ -1,4 +1,4 @@
-export default function timeLineTakeoutParser(coordinatesText, SCALAR_E7) {
+export default function timeLineParser(coordinatesText, SCALAR_E7) {
     let coordsParsed = [];
 
     JSON.parse(coordinatesText).locations.forEach((point) => {

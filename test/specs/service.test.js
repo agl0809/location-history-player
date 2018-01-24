@@ -1,4 +1,4 @@
-import * as LocationHistory from '../../../../src/js/lib/LocationHistoryController/LocationHistory';
+import service from 'js/service';
 
 let ready_state, state;
 let oldXMLHttpRequest;
@@ -27,13 +27,13 @@ function xmlHttpRequestRestore() {
 }
 
 function whenReadFile(fileUrl, xhr) {
-    const promise = LocationHistory.service(fileUrl);
+    const promise = service(fileUrl);
     xhr.onreadystatechange();
 
     return promise;
 }
 
-describe('reading a file', () => {
+describe('making a request', () => {
     const fileUrl = 'any url';
 
     beforeEach(function () {
@@ -72,21 +72,5 @@ describe('reading a file', () => {
             expect(response).toEqual(xhrError);
             done();
         });
-    });
-});
-
-describe('parsing the file\'s content', () => {
-    it('should return an array of coordinates parsed properly', () => {
-        const SCALAR_E7 = 0.0000001;
-        const latOne = 1;
-        const lonOne = 1;
-        const fileContent = '{"locations": [{"latitudeE7": ' + latOne + ',"longitudeE7": ' + lonOne + '}]}';
-        const expectedObject = [
-            [latOne * SCALAR_E7, lonOne * SCALAR_E7]
-        ];
-        let response;
-
-        response = LocationHistory.timeLineTakeoutParser(fileContent, SCALAR_E7);
-        expect(response).toEqual(expectedObject);
     });
 });

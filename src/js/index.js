@@ -1,5 +1,5 @@
-import {HEATMAP_CONTAINER_ID, LEAFLET_OPTIONS, HEAT_OPTIONS, JSON_FILE_URL} from 'js/constants.js';
-import LocationHistoryController from 'js/LocationHistoryController.js';
+import {HEATMAP_CONTAINER_ID, LEAFLET_OPTIONS, HEAT_OPTIONS, JSON_FILE_URL} from 'helpers/constants.js';
+import LocationHistoryController from 'js/locationHistoryController.js';
 import MapController from 'js/Map/MapController.js';
 
 LocationHistoryController().getCoordinates(JSON_FILE_URL)

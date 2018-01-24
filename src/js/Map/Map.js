@@ -19,3 +19,4 @@ export function createHeatMap(mapInstance, coords, heatOptions) {
 
     return heat;
 }
+

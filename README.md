@@ -1,8 +1,6 @@
 # timeline-history-heatmap
 A React component to display a heat map through the location history provided by Google Maps Timeline.
 
-![THH Flow](doc/THH-flow02.jpeg "THH Flow")
-
 ## Table of Contents
 
 - [Available Scripts](#available-scripts)
