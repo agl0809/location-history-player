@@ -1,4 +1,4 @@
-import timeLineParser from 'js/timeLineParser';
+import {timeLineParser} from 'js/timeLineParser';
 
 describe('parsing the file\'s content', () => {
     it('should return an array of coordinates parsed properly', () => {

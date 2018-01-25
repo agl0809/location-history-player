@@ -1,5 +1,5 @@
-import MapController from '../../../../src/js/Map/MapController';
-import * as Map from '../../../../src/js/Map/Map';
+import MapController from '../../../src/js/Map/MapController';
+import * as Map from '../../../src/js/Map/Map';
 
 let mapController;
 

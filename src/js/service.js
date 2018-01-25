@@ -1,4 +1,4 @@
-export default function service(fileUrl) {
+function service(fileUrl) {
     return new Promise((resolve, reject) => {
         const request = new XMLHttpRequest();
         request.overrideMimeType("application/json");
@@ -16,3 +16,5 @@ export default function service(fileUrl) {
         request.send(null);
     });
 }
+
+export {service};

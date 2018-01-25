@@ -1,4 +1,4 @@
-import service from 'js/service';
+import {service} from 'js/service';
 
 let ready_state, state;
 let oldXMLHttpRequest;

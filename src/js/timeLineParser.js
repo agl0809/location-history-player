@@ -1,4 +1,4 @@
-export default function timeLineParser(coordinatesText, SCALAR_E7) {
+function timeLineParser(coordinatesText, SCALAR_E7) {
     let coordsParsed = [];
 
     JSON.parse(coordinatesText).locations.forEach((point) => {
@@ -12,3 +12,5 @@ export default function timeLineParser(coordinatesText, SCALAR_E7) {
 
     return coordsParsed;
 }
+
+export {timeLineParser};
