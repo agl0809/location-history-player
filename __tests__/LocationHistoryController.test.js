@@ -1,17 +1,17 @@
-import locationHistoryController from 'js/locationHistoryController';
-import * as serve from 'js/service';
-import * as parser from 'js/timeLineParser'
+import {getCoordinates} from 'js/locationHistoryController';
+import * as serviceDep from 'js/service';
+import * as parserDep from 'js/timeLineParser'
 import {SCALAR_E7} from 'helpers/constants';
 
-describe('LocationHistoryController', () => {
+describe('locationHistoryController', () => {
 
     it('should read the file content', function () {
         const fileContent = 'any file content';
         const JSONFileUrl = 'anyURL';
-        const expectedCoords = [[1, 1]]; //multiple
+        const expectedCoords = [['any coordinates pair']];
         let controller, timeLineParser, promise;
 
-        serve.service = jest.fn(() => {
+        serviceDep.service = jest.fn(() => {
             return new Promise((resolve, reject) => {
                 process.nextTick(
                     () => resolve(fileContent)
@@ -19,20 +19,15 @@ describe('LocationHistoryController', () => {
             });
         });
 
-        parser.timeLineParser = jest.fn(() => expectedCoords);
+        parserDep.timeLineParser = jest.fn(() => expectedCoords);
 
-        controller = locationHistoryController();
-        promise = controller.getCoordinates(JSONFileUrl);
+        promise = getCoordinates(JSONFileUrl);
 
         expect.assertions(2);
 
-        /*return serve.service().then((data) => {
-            expect(parser.timeLineParser).toBeCalledWith(fileContent, SCALAR_E7);
-        });*/
-
         return promise.then((data) => {
-            expect(serve.service).toBeCalledWith(JSONFileUrl);
-            expect(parser.timeLineParser).toBeCalledWith(fileContent, SCALAR_E7);
+            expect(serviceDep.service).toBeCalledWith(JSONFileUrl);
+            expect(parserDep.timeLineParser).toBeCalledWith(fileContent, SCALAR_E7);
         });
     });
 })

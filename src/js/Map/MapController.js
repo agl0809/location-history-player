@@ -6,6 +6,4 @@ function renderHeatMap(options) {
     return Map.createHeatMap(map, options.coordinates, options.heatLayerOptions);
 }
 
-export default function MapController() {
-    return {renderHeatMap}
-};
+export {renderHeatMap};

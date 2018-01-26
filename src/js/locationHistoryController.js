@@ -10,6 +10,4 @@ function getCoordinates(JSONFileUrl) {
     });
 }
 
-export default function locationHistoryController() {
-    return {getCoordinates};
-}
+export {getCoordinates};

@@ -1,12 +1,7 @@
-import MapController from '../../../src/js/Map/MapController';
+import {renderHeatMap} from '../../../src/js/Map/MapController';
 import * as Map from '../../../src/js/Map/Map';
 
-let mapController;
-
 describe('Map Controller', () => {
-    beforeEach(function () {
-        mapController = MapController();
-    });
 
     it('should render a heat map using the configuration received', function () {
         const containerId = 'anyID';
@@ -26,7 +21,7 @@ describe('Map Controller', () => {
         Map.createMap = jest.fn(() => expectedMap);
         Map.createHeatMap = jest.fn(() => expectedHeatMap);
 
-        heatMap = mapController.renderHeatMap(renderHeatMapOptions);
+        heatMap = renderHeatMap(renderHeatMapOptions);
 
         expect(Map.createMap).toBeCalledWith(
             renderHeatMapOptions.containerId,

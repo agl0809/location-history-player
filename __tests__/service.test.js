@@ -33,7 +33,7 @@ function whenReadFile(fileUrl, xhr) {
     return promise;
 }
 
-describe('making a request', () => {
+describe('making a serviceDep', () => {
     const fileUrl = 'any url';
 
     beforeEach(function () {
