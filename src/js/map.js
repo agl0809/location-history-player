@@ -1,13 +1,23 @@
 import Leaflet from "leaflet";
 import 'leaflet.heat';
 
-export function createMap(containerId, options) {
-    const leafMap = Leaflet.map(containerId).setView(
+function initMap(containerId, options) {
+    return Leaflet.map(containerId).setView(
         options.CENTER_COORDS,
         options.ZOOM_LEVEL
     );
+}
 
+function updateTileLayer(options, leafMap) {
     Leaflet.tileLayer(options.URL_TEMPLATE, options.TILE_LAYER_OPTIONS).addTo(leafMap);
+}
+
+export function createMap(containerId, options) {
+    let leafMap;
+
+    leafMap= initMap(containerId, options);
+
+    updateTileLayer(options, leafMap);
 
     return leafMap;
 }
