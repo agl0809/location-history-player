@@ -1,6 +1,6 @@
 import {HEATMAP_CONTAINER_ID, LEAFLET_OPTIONS, HEAT_OPTIONS, JSON_FILE_URL} from 'helpers/constants';
 import {getCoordinates} from 'js/locationHistoryController';
-import {renderHeatMap} from 'js/Map/MapController';
+import {renderHeatMap} from 'js/mapController';
 
 export default function start() {
     getCoordinates(JSON_FILE_URL)

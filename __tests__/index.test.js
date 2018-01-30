@@ -1,7 +1,7 @@
 import {HEATMAP_CONTAINER_ID, LEAFLET_OPTIONS, HEAT_OPTIONS, JSON_FILE_URL} from 'helpers/constants';
 import start from 'js/index';
 import * as locationHistoryController from 'js/locationHistoryController';
-import * as MapController from 'js/Map/MapController';
+import * as MapController from 'js/mapController';
 
 describe('running up the app', () => {
     it('spec name', () => {

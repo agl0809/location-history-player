@@ -1,5 +1,5 @@
 import LeafMap from "leaflet";
-import * as Map from '../../../src/js/Map/Map';
+import * as Map from 'js/map';
 
 describe('drawing a map', () => {
     it('should create a map', () => {
