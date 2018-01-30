@@ -18,6 +18,6 @@ export const HEAT_OPTIONS = {
 };
 
 // App
-export const JSON_FILE_URL = 'locationhistory.json';
+export const JSON_FILE_URL = 'https://api-project-923029851043.firebaseio.com/locations.json';
 export const LEAFLET_OPTIONS = {CENTER_COORDS, ZOOM_LEVEL, URL_TEMPLATE, TILE_LAYER_OPTIONS};
 export const HEATMAP_CONTAINER_ID = 'heatmap-container';

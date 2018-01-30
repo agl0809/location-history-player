@@ -1,7 +1,7 @@
 function timeLineParser(coordinatesText, SCALAR_E7) {
     let coordsParsed = [];
 
-    JSON.parse(coordinatesText).locations.forEach((point) => {
+    JSON.parse(coordinatesText).forEach((point) => {
         let lat, lon;
 
         lat = point.latitudeE7 * SCALAR_E7;
