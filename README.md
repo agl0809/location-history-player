@@ -1,5 +1,5 @@
-# timeline-history-heatmap
-A React component to display a heat map through the location history provided by Google Maps Timeline.
+# Location History Player
+Using ES6 and Test-driven development (TDD) to display a heat map through the location history provided by Google Maps Timeline.
 
 ## Table of Contents
 
