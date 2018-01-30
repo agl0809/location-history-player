@@ -18,6 +18,6 @@ export const HEAT_OPTIONS = {
 };
 
 // App
-export const JSON_FILE_URL = 'https://raw.githubusercontent.com/agl0809/timeline-history-heatmap/develop/public/history.json?token=ABfk349jXnABLIk5SYD-QkxyFvh5sK-iks5aa8ihwA%3D%3D';
+export const JSON_FILE_URL = 'locationhistory.json';
 export const LEAFLET_OPTIONS = {CENTER_COORDS, ZOOM_LEVEL, URL_TEMPLATE, TILE_LAYER_OPTIONS};
 export const HEATMAP_CONTAINER_ID = 'heatmap-container';
