@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/agl0809/location-history-player.svg?branch=master)](https://travis-ci.org/agl0809/location-history-player)
+
 # Location History Player
 Using ES6 and Test-driven development (TDD) to display a heat map through the location history provided by Google Maps Timeline.
 
