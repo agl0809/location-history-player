@@ -2,6 +2,6 @@ language: node_js
 node_js:
   - "stable"
 install: npm install
-before_script: npm test
+before_script: npm run test
 after_script:
-- npm run coveralls
+- npm run coverage
