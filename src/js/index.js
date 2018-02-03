@@ -3,17 +3,17 @@ import {getCoordinates} from 'js/locationHistoryController';
 import {renderHeatMap} from 'js/mapController';
 
 export default function start() {
-    getCoordinates(JSON_FILE_URL)
-        .then((coords) => {
-            renderHeatMap(
-                {
-                    containerId: HEATMAP_CONTAINER_ID,
-                    coordinates: coords,
-                    mapOptions: LEAFLET_OPTIONS,
-                    heatLayerOptions: HEAT_OPTIONS
-                }
-            );
-        });
+  getCoordinates(JSON_FILE_URL)
+  .then((coords) => {
+    renderHeatMap(
+      {
+        containerId: HEATMAP_CONTAINER_ID,
+        coordinates: coords,
+        mapOptions: LEAFLET_OPTIONS,
+        heatLayerOptions: HEAT_OPTIONS
+      }
+    );
+  });
 }
 
 start();

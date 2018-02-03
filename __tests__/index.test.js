@@ -4,30 +4,30 @@ import * as locationHistoryController from 'js/locationHistoryController';
 import * as MapController from 'js/mapController';
 
 describe('running up the app', () => {
-    it('spec name', () => {
-        const coordsResponse = [['any coordinates pair']];
-        const expectedMapOptions = {
-            containerId: HEATMAP_CONTAINER_ID,
-            coordinates: coordsResponse,
-            mapOptions: LEAFLET_OPTIONS,
-            heatLayerOptions: HEAT_OPTIONS
-        };
+  it('spec name', () => {
+    const coordsResponse = [['any coordinates pair']];
+    const expectedMapOptions = {
+      containerId: HEATMAP_CONTAINER_ID,
+      coordinates: coordsResponse,
+      mapOptions: LEAFLET_OPTIONS,
+      heatLayerOptions: HEAT_OPTIONS
+    };
 
-        locationHistoryController.getCoordinates = jest.fn(() =>
-            new Promise((resolve) => {
-                process.nextTick(
-                    () => resolve(coordsResponse)
-                );
-            })
+    locationHistoryController.getCoordinates = jest.fn(() =>
+      new Promise((resolve) => {
+        process.nextTick(
+          () => resolve(coordsResponse)
         );
+      })
+    );
 
-        MapController.renderHeatMap = jest.fn();
+    MapController.renderHeatMap = jest.fn();
 
-        start();
+    start();
 
-        expect(locationHistoryController.getCoordinates).toBeCalledWith(JSON_FILE_URL);
-        return locationHistoryController.getCoordinates(JSON_FILE_URL).then(() => {
-            expect(MapController.renderHeatMap).toBeCalledWith(expectedMapOptions);
-        });
+    expect(locationHistoryController.getCoordinates).toBeCalledWith(JSON_FILE_URL);
+    return locationHistoryController.getCoordinates(JSON_FILE_URL).then(() => {
+      expect(MapController.renderHeatMap).toBeCalledWith(expectedMapOptions);
     });
+  });
 });
