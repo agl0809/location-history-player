@@ -1,11 +1,11 @@
-import {timeLineParser} from 'js/timeLineParser';
+import {locationHistoryParser} from 'js/locationHistoryParser';
 import {service} from 'js/service';
 import {SCALAR_E7} from 'helpers/constants';
 
 function getCoordinates(JSONFileUrl) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         service(JSONFileUrl).then(fileContent => {
-            resolve(timeLineParser(fileContent, SCALAR_E7));
+            resolve(locationHistoryParser(fileContent, SCALAR_E7));
         });
     });
 }
