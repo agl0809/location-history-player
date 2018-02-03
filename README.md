@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/agl0809/location-history-player.svg?branch=master)](https://travis-ci.org/agl0809/location-history-player)
+
 - [Installation](#installation)
 - [Settings](#settings)
 - [Available scripts](#available-scripts)
