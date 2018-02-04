@@ -1,7 +1,7 @@
-import {getCoordinates} from 'js/locationHistoryController';
-import * as serviceDep from 'js/service';
-import * as parserDep from 'js/locationHistoryParser'
-import {SCALAR_E7} from 'helpers/constants';
+import {getCoordinates} from '../locationHistoryController';
+import * as serviceDep from '../services/service';
+import * as parserDep from '../locationHistoryParser'
+import {SCALAR_E7} from '../helpers/constants';
 
 describe('locationHistoryController', () => {
   it('should read the file content', function () {
@@ -11,7 +11,7 @@ describe('locationHistoryController', () => {
     let promise;
 
     serviceDep.service = jest.fn(() => {
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         process.nextTick(
           () => resolve(fileContent)
         );

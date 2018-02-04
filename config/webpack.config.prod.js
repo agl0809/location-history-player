@@ -92,6 +92,7 @@ module.exports = {
     alias: {
         'js': path.resolve('src/js'),
         'helpers': path.resolve('src/helpers'),
+        'services': path.resolve('src/services'),
         'style': path.resolve('src/style'),
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/

@@ -51,8 +51,9 @@
     "coverage": "node scripts/test.js --env=jsdom --coverage"
   },
   "jest": {
+    "verbose": true,
     "collectCoverageFrom": [
-      "src/js/**/*.{js,jsx,mjs}"
+      "src/**/*.{js,jsx,mjs}"
     ],
     "setupFiles": [
       "<rootDir>/config/polyfills.js"
