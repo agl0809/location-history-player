@@ -1,4 +1,4 @@
-import {SCALAR_E7} from '../helpers/constants';
+import {SCALAR_E7} from 'helpers/constants';
 
 function _getLagLngCoordinates(coordinates) {
   return coordinates.map(elem =>

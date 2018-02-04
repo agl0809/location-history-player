@@ -1,5 +1,5 @@
-import {locationHistoryParser} from 'js/locationHistoryParser';
-import {service} from 'js/service';
+import {locationHistoryParser} from './locationHistoryParser';
+import {service} from 'services/service';
 import {SCALAR_E7} from 'helpers/constants';
 
 function getCoordinates(JSONFileUrl) {

@@ -1,5 +1,5 @@
-import {renderHeatMap} from 'js/mapController';
-import * as Map from 'js/map';
+import {renderHeatMap} from '../mapController';
+import * as Map from '../map';
 
 describe('Map Controller', () => {
 

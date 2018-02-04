@@ -1,5 +1,5 @@
 import LeafMap from "leaflet";
-import * as Map from 'js/map';
+import * as Map from '../map';
 
 describe('drawing a map', () => {
   it('should create a map', () => {
@@ -31,7 +31,7 @@ describe('drawing a map', () => {
     expect(LeafMap.tileLayer).toBeCalledWith(URL_TEMPLATE, TILE_LAYER_OPTIONS);
   });
 
-  it('should create a heat layer on the map using the coordenates received', () => {
+  it('should create a heat layer on the map using the coordinates received', () => {
     const heatOptions = {
       tileOpacity: 'any tileOpacity',
       heatOpacity: 'any heatOpacity',

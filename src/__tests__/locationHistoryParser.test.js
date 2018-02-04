@@ -1,4 +1,4 @@
-import {locationHistoryParser} from 'js/locationHistoryParser';
+import {locationHistoryParser} from '../locationHistoryParser';
 
 describe('parsing a service response', () => {
 
