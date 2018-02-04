@@ -48,11 +48,8 @@ Launches the test runner in the interactive watch mode.
 **npm run build**<br>
 Builds the app for production to the `build` folder.
 
-It correctly bundles React in production mode and optimizes the build for the best performance.<br>
-The build is minified and the filenames include the hashes.
-
 ## Dependencies 
-[leaflet](https://github.com/Leaflet/Leaflet)
+[leaflet](https://github.com/Leaflet/Leaflet)<br>
 [leaflet.heat](https://github.com/Leaflet/Leaflet.heat)
 
 ## Scaffolding
